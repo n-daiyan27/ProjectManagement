@@ -1,0 +1,15 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+    {{ project.name }}
+{% endblock %}
+
+{% block content %}
+    <h1>{% if task %}Edit Task{% else %}New Task{% endif %}</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">{% if task %}Save{% else %}Create{% endif %}</button>
+    </form>
+    <a href="{% url 'project_detail' project.pk %}">Back to Project</a>
+{% endblock %}

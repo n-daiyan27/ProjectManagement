@@ -1,0 +1,15 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+    {{ project.name }}
+{% endblock %}
+
+{% block content %}
+    <h1>Assign Task</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Assign</button>
+    </form>
+    <a href="{% url 'project_detail' task.project.pk %}">Back to Project</a>
+{% endblock %}
